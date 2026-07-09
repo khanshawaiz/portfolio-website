@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { navLinks } from "@/data/site";
 import { profile } from "@/data/profile";
@@ -17,11 +17,11 @@ export function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 24);
-      
+
       // Determine active section based on scroll position
       const sections = navLinks.map(link => link.href.replace('#', ''));
       const scrollPosition = window.scrollY + 100;
-      
+
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -66,9 +66,6 @@ export function Navbar() {
           whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
           className="group inline-flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
-          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-accent/25 bg-surface-elevated/90 font-mono text-xs font-semibold text-accent shadow-[0_8px_24px_-16px_rgba(79,70,229,0.35)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-accent/50 group-hover:shadow-[0_12px_28px_-16px_rgba(79,70,229,0.3)]">
-            SK
-          </span>
           <span className="hidden flex-col sm:flex">
             <span className="font-display text-sm font-semibold tracking-tight text-foreground">
               {profile.name}
@@ -113,7 +110,10 @@ export function Navbar() {
             whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
             aria-controls="mobile-menu"
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-            onClick={() => setIsMobileMenuOpen((open) => !open)}
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsMobileMenuOpen((open) => !open);
+            }}
             className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/70 bg-surface-elevated/90 text-foreground shadow-[0_8px_24px_-16px_rgba(15,23,42,0.2)] transition-all duration-300 hover:border-accent/40 hover:shadow-[0_12px_28px_-16px_rgba(79,70,229,0.25)] lg:hidden"
           >
             {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
@@ -121,31 +121,25 @@ export function Navbar() {
         </div>
       </Container>
 
-      <AnimatePresence>
-        {isMobileMenuOpen ? (
-          <motion.div
-            id="mobile-menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden border-b border-border/70 bg-background/95 shadow-[0_12px_30px_-20px_rgba(15,23,42,0.24)] backdrop-blur-xl lg:hidden"
-          >
-            <Container className="flex flex-col gap-1 py-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={handleNavClick}
-                  className="rounded-xl px-4 py-3 text-sm text-muted-foreground transition-all duration-200 hover:bg-surface-muted hover:text-foreground"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </Container>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+      {isMobileMenuOpen && (
+        <div
+          id="mobile-menu"
+          className="overflow-hidden border-b border-border/70 bg-background/95 shadow-[0_12px_30px_-20px_rgba(15,23,42,0.24)] backdrop-blur-xl lg:hidden"
+        >
+          <Container className="flex flex-col gap-1 py-4">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={handleNavClick}
+                className="rounded-xl px-4 py-3 text-sm text-muted-foreground transition-all duration-200 hover:bg-surface-muted hover:text-foreground"
+              >
+                {link.label}
+              </a>
+            ))}
+          </Container>
+        </div>
+      )}
     </header>
   );
 }
