@@ -1,0 +1,17 @@
+{
+  "name": "Shawaiz Khan - Full Stack Developer | MERN Stack & AI/RAG Developer",
+  "short_name": "Shawaiz Khan",
+  "description": "Full Stack Developer with hands-on experience building MERN stack and AI-powered applications, including Retrieval-Augmented Generation (RAG) systems using LangChain, Ollama, PostgreSQL + pgvector, ChromaDB, Gemini API, and Groq API. Experienced in developing secure full-stack web applications, RESTful APIs, semantic search systems, and document question-answering solutions. Currently pursuing a Bachelor of Science in Computer Science and seeking internship or entry-level software engineering opportunities.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080b12",
+  "theme_color": "#2dd4bf",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}
