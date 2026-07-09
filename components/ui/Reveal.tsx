@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 import { defaultViewport, fadeUpVariants } from "@/lib/motion";
 import { cn } from "@/lib/cn";
@@ -20,17 +20,10 @@ export function Reveal({
   variants = fadeUpVariants,
   as = "div",
 }: RevealProps) {
-  const shouldReduceMotion = useReducedMotion();
-  const Component = as;
-
-  if (shouldReduceMotion) {
-    return <Component className={cn(className)}>{children}</Component>;
-  }
-
-  const MotionComponent = motion[as];
+  const Component = motion[as];
 
   return (
-    <MotionComponent
+    <Component
       custom={delay}
       initial="hidden"
       whileInView="visible"
@@ -39,6 +32,6 @@ export function Reveal({
       className={cn(className)}
     >
       {children}
-    </MotionComponent>
+    </Component>
   );
 }
