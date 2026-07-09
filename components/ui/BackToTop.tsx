@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/cn";
 
 export function BackToTop() {
+  const shouldReduceMotion = useReducedMotion();
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -31,14 +32,14 @@ export function BackToTop() {
     <AnimatePresence>
       {isVisible && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ duration: 0.2 }}
+          initial={shouldReduceMotion ? false : { opacity: 0, scale: 0.8 }}
+          animate={shouldReduceMotion ? { opacity: 1, scale: 1 } : { opacity: 1, scale: 1 }}
+          exit={shouldReduceMotion ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+          transition={{ duration: shouldReduceMotion ? 0.01 : 0.2 }}
           onClick={scrollToTop}
           aria-label="Back to top"
           className={cn(
-            "fixed bottom-8 right-8 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-accent/30 bg-accent/10 text-accent shadow-lg backdrop-blur-sm transition-all duration-300 hover:bg-accent/20 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-accent/60 focus:ring-offset-2 focus:ring-offset-background",
+            "fixed bottom-6 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-accent/30 bg-surface-elevated/90 text-accent shadow-[0_16px_40px_-24px_rgba(79,70,229,0.45)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent/10 hover:shadow-[0_20px_44px_-20px_rgba(79,70,229,0.35)] focus:outline-none focus:ring-2 focus:ring-accent/60 focus:ring-offset-2 focus:ring-offset-background sm:bottom-8 sm:right-8",
             "md:bottom-10 md:right-10",
           )}
         >

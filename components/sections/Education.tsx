@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { educationContent, educationEntries } from "@/data/education";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/ui/Reveal";
@@ -11,7 +12,7 @@ export function Education() {
     <section
       id="education"
       aria-labelledby="education-heading"
-      className="relative scroll-mt-24 py-24 sm:py-28"
+      className="relative scroll-mt-24 py-20 sm:py-24 lg:py-28"
     >
       <Container>
         <SectionHeader
@@ -38,7 +39,7 @@ export function Education() {
               >
                 <span
                   aria-hidden="true"
-                    className={cn(
+                  className={cn(
                     "absolute left-2.5 top-6 flex h-3 w-3 rounded-full border-2 border-background sm:left-[1.625rem]",
                     index === 0
                       ? "bg-accent shadow-[0_0_16px_rgba(45,212,191,0.65)]"
@@ -46,7 +47,10 @@ export function Education() {
                   )}
                 />
 
-                <article className="rounded-[1.75rem] border border-border bg-surface-elevated/70 p-6 transition-colors duration-300 hover:border-accent/25 sm:p-7">
+                <motion.article
+                  whileHover={{ y: -2 }}
+                  className="rounded-[1.5rem] border border-border/70 bg-surface-elevated/90 p-5 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.2)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_18px_36px_-20px_rgba(79,70,229,0.25)] sm:p-7"
+                >
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                     <div>
                       <p className="font-mono text-xs tracking-[0.18em] text-accent uppercase">
@@ -68,16 +72,17 @@ export function Education() {
                   {entry.details.length > 0 ? (
                     <ul className="mt-5 flex flex-wrap gap-2">
                       {entry.details.map((detail) => (
-                        <li
+                        <motion.li
                           key={detail}
-                          className="rounded-full border border-border bg-background/60 px-3 py-1.5 text-xs text-muted-foreground"
+                          whileHover={{ scale: 1.05, y: -1 }}
+                          className="rounded-full border border-border/60 bg-background/60 px-3 py-1.5 text-xs text-muted-foreground transition-all duration-200 hover:border-accent/30 hover:bg-accent/5"
                         >
                           {detail}
-                        </li>
+                        </motion.li>
                       ))}
                     </ul>
                   ) : null}
-                </article>
+                </motion.article>
               </Reveal>
             ))}
           </ol>

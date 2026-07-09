@@ -21,7 +21,7 @@ export function LoadingScreen() {
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
       transition={{ duration: 0.45, delay: 0.55, ease: "easeInOut" }}
-      className="pointer-events-none fixed inset-0 z-[100] flex items-center justify-center bg-background"
+      className="pointer-events-none fixed inset-0 z-[100] flex items-center justify-center bg-background/95 backdrop-blur-sm"
       aria-hidden="true"
     >
       <motion.div

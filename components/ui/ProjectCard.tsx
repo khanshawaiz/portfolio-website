@@ -61,22 +61,27 @@ export function ProjectCard({
     <motion.article
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -6, rotateX: 1 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        "group relative rounded-[1.75rem] border bg-surface-elevated/75 p-6 backdrop-blur-sm transition-all duration-300 hover:border-accent/30 sm:p-7",
-        featured && "border-accent/25 bg-[linear-gradient(145deg,rgba(45,212,191,0.06),rgba(96,165,250,0.03))]",
+        "group relative rounded-[1.75rem] border border-border/60 bg-surface-elevated/80 p-6 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:shadow-xl hover:shadow-accent/10 sm:p-7",
+        featured && "border-accent/30 bg-[linear-gradient(145deg,rgba(91,95,239,0.08),rgba(232,163,61,0.04))] shadow-lg shadow-accent/5",
         className,
       )}
     >
       {featured && (
-        <span className="absolute -top-3 right-6 inline-flex items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 font-mono text-[10px] tracking-[0.16em] text-accent uppercase shadow-[0_0_12px_rgba(45,212,191,0.25)]">
+        <motion.span
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="absolute top-4 right-4 z-20 inline-flex items-center whitespace-nowrap rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[10px] font-semibold tracking-[0.12em] uppercase text-accent shadow-lg shadow-accent/20"
+        >
           Featured
-        </span>
+        </motion.span>
       )}
 
       {hasAssets && (
-        <div className="mb-6 overflow-hidden rounded-2xl border border-border/60 bg-background/50">
+        <div className="mb-6 overflow-hidden rounded-2xl border border-border/50 bg-background/60 shadow-inner">
           {demoVideo ? (
             <video
               src={demoVideo}
@@ -104,7 +109,7 @@ export function ProjectCard({
                   alt={title}
                   loading="eager"
                   decoding="async"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
                 {galleryImages.length > 1 && (
                   <span className="absolute bottom-3 left-3 rounded-full border border-white/25 bg-black/50 px-3 py-1 text-xs font-medium text-white/90 backdrop-blur-sm">
@@ -129,7 +134,7 @@ export function ProjectCard({
                   alt={`${title} screenshot`}
                   loading="eager"
                   decoding="async"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
               </div>
             </button>
@@ -232,7 +237,7 @@ export function ProjectCard({
                     className={cn(
                       "relative h-16 w-24 shrink-0 overflow-hidden rounded-lg border transition-all",
                       activeImageIndex === index
-                        ? "border-accent shadow-[0_0_0_1px_rgba(45,212,191,0.35)]"
+                        ? "border-accent shadow-[0_0_0_1px_rgba(91,95,239,0.35)]"
                         : "border-border/60 hover:border-accent/40",
                     )}
                   >
