@@ -49,7 +49,7 @@ export function Education() {
 
                 <motion.article
                   whileHover={{ y: -2 }}
-                  className="rounded-[1.5rem] border border-border/70 bg-surface-elevated/90 p-5 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.2)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_18px_36px_-20px_rgba(79,70,229,0.25)] sm:p-7"
+                  className="rounded-[1.5rem] border border-border/70 bg-surface-elevated/90 p-5 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.2)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_18px_36px_-20px_rgba(5,150,105,0.25)] sm:p-7"
                 >
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                     <div>

@@ -7,9 +7,9 @@ type ButtonSize = "sm" | "md" | "lg";
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    "relative isolate overflow-hidden rounded-full bg-gradient-to-r from-accent via-accent to-accent-hover text-accent-foreground shadow-[0_10px_30px_-12px_rgba(79,70,229,0.45)] hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-16px_rgba(79,70,229,0.55)] active:translate-y-0 active:shadow-[0_8px_18px_-10px_rgba(79,70,229,0.4)] before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.28),transparent_45%)] before:opacity-90 before:transition before:duration-300",
+    "relative isolate overflow-hidden rounded-full bg-gradient-to-r from-accent via-accent to-accent-hover text-accent-foreground shadow-[0_10px_30px_-12px_rgba(5,150,105,0.45)] hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-16px_rgba(5,150,105,0.55)] active:translate-y-0 active:shadow-[0_8px_18px_-10px_rgba(5,150,105,0.4)] before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.28),transparent_45%)] before:opacity-90 before:transition before:duration-300",
   secondary:
-    "border border-border/70 bg-surface-elevated/90 text-foreground shadow-[0_8px_24px_-16px_rgba(15,23,42,0.2)] backdrop-blur-sm hover:border-accent/40 hover:bg-surface-muted hover:shadow-[0_14px_30px_-16px_rgba(79,70,229,0.28)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm",
+    "border border-border/70 bg-surface-elevated/90 text-foreground shadow-[0_8px_24px_-16px_rgba(15,23,42,0.2)] backdrop-blur-sm hover:border-accent/40 hover:bg-surface-muted hover:shadow-[0_14px_30px_-16px_rgba(5,150,105,0.28)] hover:-translate-y-0.5 active:translate-y-0 active:shadow-sm",
   ghost:
     "text-muted-foreground hover:text-foreground hover:bg-surface-muted/90 hover:shadow-sm hover:-translate-y-0.5 active:translate-y-0",
 };

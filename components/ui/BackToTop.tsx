@@ -39,7 +39,7 @@ export function BackToTop() {
           onClick={scrollToTop}
           aria-label="Back to top"
           className={cn(
-            "fixed bottom-6 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-accent/30 bg-surface-elevated/90 text-accent shadow-[0_16px_40px_-24px_rgba(79,70,229,0.45)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent/10 hover:shadow-[0_20px_44px_-20px_rgba(79,70,229,0.35)] focus:outline-none focus:ring-2 focus:ring-accent/60 focus:ring-offset-2 focus:ring-offset-background sm:bottom-8 sm:right-8",
+            "fixed bottom-6 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-accent/30 bg-surface-elevated/90 text-accent shadow-[0_16px_40px_-24px_rgba(5,150,105,0.45)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent/10 hover:shadow-[0_20px_44px_-20px_rgba(5,150,105,0.35)] focus:outline-none focus:ring-2 focus:ring-accent/60 focus:ring-offset-2 focus:ring-offset-background sm:bottom-8 sm:right-8",
             "md:bottom-10 md:right-10",
           )}
         >

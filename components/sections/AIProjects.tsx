@@ -16,7 +16,7 @@ export function AIProjects() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(91,95,239,0.06),transparent_58%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(5,150,105,0.06),transparent_58%)]"
       />
 
       <Container className="relative">

@@ -237,12 +237,11 @@ export function Hero() {
             className="relative hidden lg:block"
             aria-label="Profile highlights"
           >
-            <div className="glass-card rounded-4xl p-5 shadow-[0_18px_48px_-24px_rgba(15,23,42,0.3)] sm:p-8">
+            <div className="rounded-2xl border border-border/60 bg-surface-elevated/80 p-6 shadow-[0_8px_24px_-12px_rgba(15,23,42,0.12)]">
               <p className="font-mono text-xs tracking-[0.24em] text-accent uppercase">
                 Focus Areas
               </p>
-              <div className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-accent shadow-lg shadow-accent/50" />
-              <ul className="mt-6 space-y-4">
+              <ul className="mt-4 space-y-3">
                 {[
                   "AI / RAG systems with LangChain, Ollama, and vector databases",
                   "MERN stack applications with secure authentication and REST APIs",
@@ -250,7 +249,7 @@ export function Hero() {
                 ].map((item) => (
                   <li
                     key={item}
-                    className="flex gap-3 text-sm leading-6 text-muted-foreground sm:text-[15px]"
+                    className="flex gap-3 text-sm leading-6 text-muted-foreground"
                   >
                     <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                     {item}
@@ -258,18 +257,22 @@ export function Hero() {
                 ))}
               </ul>
 
-              <div className="mt-8 grid gap-3 sm:auto-rows-[1fr] sm:grid-cols-2">
-                <div className="h-full">
-                  <Stat label="Location" value={profile.location} />
+              <div className="mt-6 grid grid-cols-2 gap-3">
+                <div>
+                  <p className="text-xs tracking-[0.16em] text-muted-foreground uppercase">Location</p>
+                  <p className="mt-1 text-sm text-foreground">{profile.location}</p>
                 </div>
-                <div className="h-full">
-                  <Stat label="Education" value="Bachelor of Science in Computer Science" />
+                <div>
+                  <p className="text-xs tracking-[0.16em] text-muted-foreground uppercase">Role</p>
+                  <p className="mt-1 text-sm text-foreground">{profile.title}</p>
                 </div>
-                <div className="h-full">
-                  <Stat label="Phone" value={profile.phone} />
+                <div>
+                  <p className="text-xs tracking-[0.16em] text-muted-foreground uppercase">Phone</p>
+                  <p className="mt-1 text-sm text-foreground">{profile.phone}</p>
                 </div>
-                <div className="h-full">
-                  <Stat label="Email" value={profile.email} />
+                <div>
+                  <p className="text-xs tracking-[0.16em] text-muted-foreground uppercase">Email</p>
+                  <p className="mt-1 text-sm text-foreground break-all">{profile.email}</p>
                 </div>
               </div>
             </div>
@@ -277,21 +280,5 @@ export function Hero() {
         </div>
       </Container>
     </section>
-  );
-}
-
-function Stat({ label, value }: { label: string; value: string }) {
-  return (
-    <motion.div
-      whileHover={{ y: -2, scale: 1.02 }}
-      className="flex h-full flex-col rounded-[1.2rem] border border-border/70 bg-background/70 px-4 py-3 shadow-[0_8px_22px_-16px_rgba(15,23,42,0.18)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_12px_28px_-16px_rgba(5,150,105,0.24)]"
-    >
-      <p className="text-xs tracking-[0.16em] text-muted-foreground uppercase">
-        {label}
-      </p>
-      <p className="mt-2 text-sm leading-6 text-foreground wrap-break-word">
-        {value}
-      </p>
-    </motion.div>
   );
 }

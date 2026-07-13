@@ -39,7 +39,7 @@ export function About() {
                   <motion.div
                     key={detail.label}
                     whileHover={{ y: -2, scale: 1.01 }}
-                    className="overflow-hidden rounded-[1.25rem] border border-border/70 bg-surface-elevated/90 px-4 py-4 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.22)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_14px_32px_-18px_rgba(79,70,229,0.28)]"
+                    className="overflow-hidden rounded-[1.25rem] border border-border/70 bg-surface-elevated/90 px-4 py-4 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.22)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_14px_32px_-18px_rgba(5,150,105,0.28)]"
                   >
                     <dt className="font-mono text-[11px] tracking-[0.18em] text-accent uppercase">
                       {detail.label}
@@ -66,7 +66,7 @@ export function About() {
                   as="li"
                   delay={0.12 + index * 0.1}
                   variants={slideInLeftVariants}
-                  className="group relative rounded-3xl border border-border/70 bg-surface-elevated/90 p-5 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.2)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_18px_36px_-20px_rgba(79,70,229,0.25)] sm:p-7"
+                  className="group relative rounded-3xl border border-border/70 bg-surface-elevated/90 p-5 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.2)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_18px_36px_-20px_rgba(5,150,105,0.25)] sm:p-7"
                 >
                   <span
                     aria-hidden="true"
@@ -78,7 +78,7 @@ export function About() {
                   <div className="flex items-start gap-4">
                     <motion.span
                       whileHover={{ scale: 1.1, rotate: 5 }}
-                      className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-accent/25 bg-accent/10 font-mono text-xs font-semibold text-accent shadow-[0_8px_20px_-12px_rgba(79,70,229,0.35)] transition-transform duration-200"
+                      className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-accent/25 bg-accent/10 font-mono text-xs font-semibold text-accent shadow-[0_8px_20px_-12px_rgba(5,150,105,0.35)] transition-transform duration-200"
                     >
                       {String(index + 1).padStart(2, "0")}
                     </motion.span>

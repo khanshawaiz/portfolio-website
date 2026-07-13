@@ -67,7 +67,7 @@ export function ProjectCard({
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
         "group relative rounded-[1.75rem] border border-border/60 bg-surface-elevated/80 p-6 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:shadow-xl hover:shadow-accent/10 sm:p-7",
-        featured && "border-accent/30 bg-[linear-gradient(145deg,rgba(91,95,239,0.08),rgba(232,163,61,0.04))] shadow-lg shadow-accent/5",
+        featured && "border-accent/30 bg-[linear-gradient(145deg,rgba(5,150,105,0.08),rgba(217,119,6,0.04))] shadow-lg shadow-accent/5",
         className,
       )}
     >
@@ -240,7 +240,7 @@ export function ProjectCard({
                     className={cn(
                       "relative h-16 w-24 shrink-0 overflow-hidden rounded-lg border transition-all",
                       activeImageIndex === index
-                        ? "border-accent shadow-[0_0_0_1px_rgba(91,95,239,0.35)]"
+                        ? "border-accent shadow-[0_0_0_1px_rgba(5,150,105,0.35)]"
                         : "border-border/60 hover:border-accent/40",
                     )}
                   >

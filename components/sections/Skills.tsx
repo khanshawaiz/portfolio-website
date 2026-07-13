@@ -19,7 +19,7 @@ export function Skills() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(91,95,239,0.06),transparent_58%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(5,150,105,0.06),transparent_58%)]"
       />
 
       <Container className="relative">
@@ -40,7 +40,7 @@ export function Skills() {
               className={cn(
                 "group relative rounded-[1.75rem] border border-border/60 bg-surface-elevated/80 p-6 backdrop-blur-sm transition-all duration-300 hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5 sm:p-7",
                 category.featured
-                  ? "border-accent/30 bg-[linear-gradient(145deg,rgba(91,95,239,0.08),rgba(232,163,61,0.04))] shadow-lg shadow-accent/5 md:col-span-2 xl:col-span-7 xl:row-span-2"
+                  ? "border-accent/30 bg-[linear-gradient(145deg,rgba(5,150,105,0.08),rgba(217,119,6,0.04))] shadow-lg shadow-accent/5 md:col-span-2 xl:col-span-7 xl:row-span-2"
                   : "border-border xl:col-span-5",
                 category.id === "tools" && "xl:col-span-5",
                 category.id === "cms" && "xl:col-span-5",

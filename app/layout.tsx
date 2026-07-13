@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { inter, jetbrainsMono, sora } from "@/lib/fonts";
+import { inter, jetbrainsMono } from "@/lib/fonts";
 import { siteConfig } from "@/data/site";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
@@ -57,7 +57,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${sora.variable} ${inter.variable} ${jetbrainsMono.variable} dark h-full scroll-smooth`}
+      className={`${inter.variable} ${jetbrainsMono.variable} dark h-full scroll-smooth`}
       suppressHydrationWarning
     >
       <head>

@@ -114,7 +114,7 @@ export function Navbar() {
               e.stopPropagation();
               setIsMobileMenuOpen((open) => !open);
             }}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/70 bg-surface-elevated/90 text-foreground shadow-[0_8px_24px_-16px_rgba(15,23,42,0.2)] transition-all duration-300 hover:border-accent/40 hover:shadow-[0_12px_28px_-16px_rgba(79,70,229,0.25)] lg:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/70 bg-surface-elevated/90 text-foreground shadow-[0_8px_24px_-16px_rgba(15,23,42,0.2)] transition-all duration-300 hover:border-accent/40 hover:shadow-[0_12px_28px_-16px_rgba(5,150,105,0.25)] lg:hidden"
           >
             {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
           </motion.button>

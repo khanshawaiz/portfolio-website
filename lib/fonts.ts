@@ -1,10 +1,4 @@
-import { Inter, JetBrains_Mono, Sora, Playfair_Display } from "next/font/google";
-
-export const sora = Sora({
-  subsets: ["latin"],
-  variable: "--font-sora",
-  display: "swap",
-});
+import { Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
 
 export const inter = Inter({
   subsets: ["latin"],
