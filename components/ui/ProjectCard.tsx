@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Button } from "./Button";
 import { SkillTag } from "./SkillTag";
 import { cn } from "@/lib/cn";
@@ -104,12 +105,13 @@ export function ProjectCard({
               aria-label={`Open screenshots for ${title}`}
             >
               <div className="relative aspect-video w-full">
-                <img
+                <Image
                   src={coverImage}
                   alt={title}
-                  loading="eager"
-                  decoding="async"
-                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
                 {galleryImages.length > 1 && (
                   <span className="absolute bottom-3 left-3 rounded-full border border-white/25 bg-black/50 px-3 py-1 text-xs font-medium text-white/90 backdrop-blur-sm">
@@ -129,12 +131,13 @@ export function ProjectCard({
               aria-label={`Open screenshots for ${title}`}
             >
               <div className="relative aspect-video w-full">
-                <img
+                <Image
                   src={screenshots[0]}
                   alt={`${title} screenshot`}
-                  loading="eager"
-                  decoding="async"
-                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                 />
               </div>
             </button>
@@ -197,7 +200,7 @@ export function ProjectCard({
 
       {isGalleryOpen && galleryImages.length > 0 && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-60 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
           onClick={() => setIsGalleryOpen(false)}
@@ -216,13 +219,13 @@ export function ProjectCard({
             </button>
 
             <div className="overflow-hidden rounded-[1.25rem] border border-border/60 bg-background/50">
-              <div className="relative aspect-[16/10] w-full">
-                <img
+              <div className="relative aspect-16/10 w-full">
+                <Image
                   src={galleryImages[activeImageIndex]}
                   alt={`${title} screenshot ${activeImageIndex + 1}`}
-                  loading="eager"
-                  decoding="async"
-                  className="h-full w-full object-contain"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 80vw"
+                  className="object-contain"
                 />
               </div>
             </div>
@@ -241,7 +244,13 @@ export function ProjectCard({
                         : "border-border/60 hover:border-accent/40",
                     )}
                   >
-                    <img src={image} alt={`${title} thumbnail ${index + 1}`} loading="lazy" decoding="async" className="h-full w-full object-cover" />
+                    <Image
+                      src={image}
+                      alt={`${title} thumbnail ${index + 1}`}
+                      fill
+                      sizes="96px"
+                      className="object-cover"
+                    />
                   </button>
                 ))}
               </div>

@@ -30,7 +30,7 @@ export const mernProjects: MERNProject[] = [
     description:
       "Full-stack note management application with JWT-based authentication, protected CRUD operations, React Context API for state management, RESTful APIs, and a responsive Bootstrap interface.",
     technologies: ["MongoDB", "Express.js", "React.js", "Node.js"],
-    githubUrl: "https://github.com/khanshawaiz/simple-rag-project1",
+    githubUrl: "https://github.com/khanshawaiz/inotebook",
     coverImage: "/projects/inotebook/cover.png",
     screenshots: ["/projects/inotebook/1.png", "/projects/inotebook/2.png"],
     featured: true,

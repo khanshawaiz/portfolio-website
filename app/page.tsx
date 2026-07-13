@@ -9,7 +9,6 @@ import { Contact } from "@/components/sections/Contact";
 import { Education } from "@/components/sections/Education";
 import { Hero } from "@/components/sections/Hero";
 import { MERNProjects } from "@/components/sections/MERNProjects";
-import { Resume } from "@/components/sections/Resume";
 import { Skills } from "@/components/sections/Skills";
 
 export default function Home() {
@@ -36,9 +35,6 @@ export default function Home() {
       </div>
       <div data-aos="fade-up" data-aos-delay="150">
         <MERNProjects />
-      </div>
-      <div data-aos="fade-up" data-aos-delay="200">
-        <Resume />
       </div>
       <div data-aos="fade-up" data-aos-delay="250">
         <Education />

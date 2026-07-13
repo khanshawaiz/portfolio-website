@@ -16,7 +16,7 @@ export function About() {
     >
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-border to-transparent"
       />
 
       <Container>
@@ -45,7 +45,7 @@ export function About() {
                       {detail.label}
                     </dt>
                     <dd className="mt-2 text-sm leading-6 text-foreground break-all">
-                      <span className="break-words">{detail.value}</span>
+                      <span className="wrap-break-word">{detail.value}</span>
                     </dd>
                   </motion.div>
                 ))}
@@ -56,7 +56,7 @@ export function About() {
           <div className="relative">
             <div
               aria-hidden="true"
-              className="absolute -left-6 top-8 hidden h-[calc(100%-2rem)] w-px bg-gradient-to-b from-accent/40 via-border to-transparent lg:block"
+              className="absolute -left-6 top-8 hidden h-[calc(100%-2rem)] w-px bg-linear-to-b from-accent/40 via-border to-transparent lg:block"
             />
 
             <ol className="space-y-5">
@@ -66,7 +66,7 @@ export function About() {
                   as="li"
                   delay={0.12 + index * 0.1}
                   variants={slideInLeftVariants}
-                  className="group relative rounded-[1.5rem] border border-border/70 bg-surface-elevated/90 p-5 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.2)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_18px_36px_-20px_rgba(79,70,229,0.25)] sm:p-7"
+                  className="group relative rounded-3xl border border-border/70 bg-surface-elevated/90 p-5 shadow-[0_10px_30px_-18px_rgba(15,23,42,0.2)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_18px_36px_-20px_rgba(79,70,229,0.25)] sm:p-7"
                 >
                   <span
                     aria-hidden="true"
