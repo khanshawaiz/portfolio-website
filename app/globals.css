@@ -1,43 +1,50 @@
 @import "tailwindcss";
 
+/* ============================================
+   NEW COLOR PALETTE – Emerald & Charcoal
+   ============================================ */
 :root {
-  --background: #f5f2ff;
-  --foreground: #161826;
-  --muted-foreground: #5f6486;
-  --surface-elevated: rgba(255, 255, 255, 0.9);
-  --surface-muted: #efeefc;
-  --border: rgba(22, 24, 38, 0.12);
-  --accent: #4f46e5;
-  --accent-hover: #4338ca;
-  --accent-secondary: #d28a1c;
-  --accent-foreground: #fcfbff;
-  --ring-offset: #f5f2ff;
-  --shadow-sm: 0 1px 2px 0 rgba(22, 24, 38, 0.05);
-  --shadow: 0 8px 24px -16px rgba(22, 24, 38, 0.18);
-  --shadow-md: 0 16px 40px -24px rgba(22, 24, 38, 0.2);
-  --shadow-lg: 0 24px 60px -30px rgba(22, 24, 38, 0.26);
-  --shadow-xl: 0 40px 80px -40px rgba(22, 24, 38, 0.3);
+  --background: #fafafa;
+  --foreground: #111827;
+  --muted-foreground: #6b7280;
+  --surface-elevated: rgba(255, 255, 255, 0.92);
+  --surface-muted: #f3f4f6;
+  --border: rgba(17, 24, 39, 0.10);
+  --accent: #059669;           /* Emerald green – fresh & distinctive */
+  --accent-hover: #047857;     /* Darker emerald */
+  --accent-secondary: #d97706; /* Warm amber – great for highlights */
+  --accent-foreground: #ffffff;
+  --ring-offset: #fafafa;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.16);
 }
 
 .dark {
-  --background: #101125;
-  --foreground: #f4f3fa;
-  --muted-foreground: #aab0cc;
-  --surface-elevated: rgba(28, 31, 57, 0.92);
-  --surface-muted: #1b1f3a;
-  --border: rgba(244, 243, 250, 0.12);
-  --accent: #8b8ff7;
-  --accent-hover: #9b9ff7;
-  --accent-secondary: #f5b84d;
-  --accent-foreground: #101125;
-  --ring-offset: #101125;
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-  --shadow: 0 10px 28px -16px rgba(0, 0, 0, 0.42);
-  --shadow-md: 0 20px 45px -25px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 28px 60px -30px rgba(0, 0, 0, 0.56);
-  --shadow-xl: 0 46px 90px -44px rgba(0, 0, 0, 0.62);
+  --background: #0c0c0e;
+  --foreground: #f1f3f5;
+  --muted-foreground: #9ca3af;
+  --surface-elevated: rgba(28, 28, 34, 0.92);
+  --surface-muted: #1a1a1f;
+  --border: rgba(241, 243, 245, 0.10);
+  --accent: #34d399;           /* Brighter emerald for dark mode */
+  --accent-hover: #6ee7b7;
+  --accent-secondary: #fbbf24;
+  --accent-foreground: #0c0c0e;
+  --ring-offset: #0c0c0e;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.7);
+  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.8);
 }
 
+/* ============================================
+   FONTS – Inter (sans) + Playfair Display (display)
+   (Make sure you import these in your layout)
+   ============================================ */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -49,11 +56,14 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-secondary: var(--accent-secondary);
   --color-accent-foreground: var(--accent-foreground);
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-sora);
-  --font-mono: var(--font-jetbrains-mono);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), "Playfair Display", serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
+/* ============================================
+   BASE STYLES
+   ============================================ */
 @layer base {
   * {
     @apply border-border;
@@ -65,36 +75,71 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    /* Subtle gradient – no more heavy purple */
     background-image:
-      radial-gradient(ellipse 80% 54% at 50% -20%, rgba(79, 70, 229, 0.12), transparent),
-      linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(244, 241, 255, 0.9));
+      radial-gradient(ellipse 70% 50% at 0% 20%, rgba(5, 150, 105, 0.05), transparent 70%),
+      radial-gradient(ellipse 70% 50% at 100% 80%, rgba(217, 119, 6, 0.04), transparent 70%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.4), rgba(250, 250, 250, 0.9));
   }
 
   .dark body {
     background-image:
-      radial-gradient(ellipse 80% 54% at 50% -20%, rgba(139, 143, 247, 0.16), transparent),
-      linear-gradient(135deg, rgba(16, 17, 37, 0.98), rgba(27, 31, 58, 1));
+      radial-gradient(ellipse 70% 50% at 0% 20%, rgba(52, 211, 153, 0.08), transparent 70%),
+      radial-gradient(ellipse 70% 50% at 100% 80%, rgba(251, 191, 36, 0.06), transparent 70%),
+      linear-gradient(180deg, rgba(12, 12, 14, 0.98), rgba(20, 20, 26, 1));
   }
 
   ::selection {
-    background: color-mix(in srgb, var(--accent) 24%, transparent);
+    background: color-mix(in srgb, var(--accent) 30%, transparent);
     color: var(--foreground);
   }
 
   *:focus-visible {
     @apply outline-none ring-2 ring-accent/60 ring-offset-2 ring-offset-background;
   }
+
+  /* ============================================
+     MICRO-INTERACTIONS – Smooth transitions
+     ============================================ */
+  a, button, .card, .project-item, .btn, [role="button"] {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Hover lift for cards & interactive blocks */
+  .card:hover,
+  .project-item:hover,
+  .hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Button hover – subtle scale + color shift */
+  .btn:hover,
+  button[type="submit"]:hover {
+    transform: scale(1.02);
+    background-color: var(--accent-hover);
+  }
+
+  /* Accent links – underline animation */
+  a:not(.btn):not([role="button"]):hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+  }
 }
 
+/* ============================================
+   UTILITY CLASSES (preserve existing ones)
+   ============================================ */
 @layer utilities {
   .font-display {
-    font-family: var(--font-sora), sans-serif;
+    font-family: var(--font-playfair), "Playfair Display", serif;
   }
 
   .font-mono {
     font-family: var(--font-jetbrains-mono), monospace;
   }
 
+  /* Glassmorphism – refined */
   .glass {
     background: rgba(255, 255, 255, 0.72);
     backdrop-filter: blur(14px);
@@ -102,31 +147,31 @@
   }
 
   .dark .glass {
-    background: rgba(28, 31, 57, 0.72);
+    background: rgba(28, 28, 34, 0.72);
   }
 
   .glass-card {
     background: rgba(255, 255, 255, 0.84);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-    border: 1px solid rgba(22, 24, 38, 0.08);
+    border: 1px solid rgba(17, 24, 39, 0.08);
     box-shadow: var(--shadow);
   }
 
   .dark .glass-card {
-    background: rgba(28, 31, 57, 0.84);
-    border: 1px solid rgba(244, 243, 250, 0.12);
+    background: rgba(28, 28, 34, 0.84);
+    border: 1px solid rgba(241, 243, 245, 0.10);
   }
 
   .panel-surface {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 242, 255, 0.9));
-    border: 1px solid rgba(22, 24, 38, 0.08);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(250, 250, 250, 0.9));
+    border: 1px solid rgba(17, 24, 39, 0.08);
     box-shadow: var(--shadow-lg);
   }
 
   .dark .panel-surface {
-    background: linear-gradient(135deg, rgba(29, 31, 59, 0.96), rgba(24, 27, 51, 0.92));
-    border: 1px solid rgba(244, 243, 250, 0.12);
+    background: linear-gradient(135deg, rgba(28, 28, 34, 0.96), rgba(20, 20, 26, 0.92));
+    border: 1px solid rgba(241, 243, 245, 0.10);
   }
 
   .section-soft {

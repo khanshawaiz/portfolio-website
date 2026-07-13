@@ -1,6 +1,9 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
+import Typed from "typed.js";
 import { profile } from "@/data/profile";
 import { resume, socialLinks } from "@/data/social";
 import { Button } from "@/components/ui/Button";
@@ -8,6 +11,28 @@ import { Container } from "@/components/ui/Container";
 
 export function Hero() {
   const shouldReduceMotion = useReducedMotion();
+  const typedRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (typedRef.current && !shouldReduceMotion) {
+      const typed = new Typed(typedRef.current, {
+        strings: [
+          "Full Stack Developer",
+          "MERN Stack Developer",
+          "AI/RAG Developer",
+          "Problem Solver",
+        ],
+        typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 2000,
+        loop: true,
+        cursorChar: "|",
+        smartBackspace: true,
+      });
+
+      return () => typed.destroy();
+    }
+  }, [shouldReduceMotion]);
 
   const fadeUp = {
     hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 24 },
@@ -28,6 +53,7 @@ export function Hero() {
       },
     },
   };
+
   return (
     <section
       id="hero"
@@ -37,15 +63,15 @@ export function Hero() {
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <motion.div
           {...floatAnimation.animate}
-          className="absolute top-20 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-accent/15 blur-3xl"
+          className="absolute top-20 left-1/2 h-112 w-md -translate-x-1/2 rounded-full bg-accent/15 blur-3xl"
         />
         <motion.div
           {...floatAnimation.animate}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
           className="absolute right-0 bottom-0 h-72 w-72 rounded-full bg-accent-secondary/15 blur-3xl"
         />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(91,95,239,0.1),transparent)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_100%_100%,rgba(232,163,61,0.08),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(5,150,105,0.08),transparent)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_100%_100%,rgba(217,119,6,0.06),transparent)]" />
       </div>
 
       <Container className="relative">
@@ -56,7 +82,7 @@ export function Hero() {
               initial="hidden"
               animate="visible"
               variants={fadeUp}
-              className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-surface-elevated/85 px-4 py-2 font-mono text-xs tracking-[0.18em] text-accent uppercase shadow-[0_10px_30px_-18px_rgba(79,70,229,0.35)] backdrop-blur-sm"
+              className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-surface-elevated/85 px-4 py-2 font-mono text-xs tracking-[0.18em] text-accent uppercase shadow-[0_10px_30px_-18px_rgba(5,150,105,0.35)] backdrop-blur-sm"
             >
               <motion.span
                 animate={{
@@ -73,6 +99,27 @@ export function Hero() {
               {profile.availability}
             </motion.p>
 
+            {/* Mobile/Tablet photo – above name */}
+            <motion.div
+              custom={0.08}
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
+              className="mb-6 flex justify-center lg:hidden"
+            >
+              <div className="relative h-32 w-32 sm:h-40 sm:w-40">
+                <div className="absolute inset-0 rounded-full bg-accent/20 blur-xl" />
+                <Image
+                  src="/images/profile.png"
+                  alt={profile.name}
+                  width={160}
+                  height={160}
+                  className="relative rounded-full border-4 border-accent/30 object-cover shadow-xl"
+                  priority
+                />
+              </div>
+            </motion.div>
+
             <motion.h1
               id="hero-heading"
               custom={0.12}
@@ -81,9 +128,26 @@ export function Hero() {
               variants={fadeUp}
               className="font-display text-4xl leading-[1.05] font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
             >
-              {profile.name}
-              <span className="mt-3 block bg-gradient-to-r from-accent via-accent-secondary to-foreground bg-clip-text text-transparent">
-                {profile.title}
+              {/* Desktop photo inline with name */}
+              <span className="hidden lg:inline-flex lg:items-center lg:gap-4">
+                <span className="relative inline-block h-16 w-16 md:h-20 md:w-20">
+                  <span className="absolute inset-0 rounded-full bg-accent/20 blur-md" />
+                  <Image
+                    src="/images/profile.png"
+                    alt={profile.name}
+                    width={80}
+                    height={80}
+                    className="relative rounded-full border-2 border-accent/30 object-cover shadow-lg"
+                    priority
+                  />
+                </span>
+                {profile.name}
+              </span>
+              <span className="lg:hidden">{profile.name}</span>
+              <span className="mt-3 block">
+                <span className="bg-linear-to-r from-accent via-accent-secondary to-foreground bg-clip-text text-transparent">
+                  <span ref={typedRef} />
+                </span>
               </span>
             </motion.h1>
 
@@ -156,7 +220,7 @@ export function Hero() {
                     href={isEmail ? `mailto:${link.username}` : link.href}
                     target={isEmail ? undefined : "_blank"}
                     rel={isEmail ? undefined : "noopener noreferrer"}
-                    className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-surface-elevated/90 px-4 py-2 text-sm text-muted-foreground shadow-[0_8px_24px_-16px_rgba(15,23,42,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/35 hover:text-foreground hover:shadow-[0_12px_28px_-16px_rgba(79,70,229,0.25)]"
+                    className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-surface-elevated/90 px-4 py-2 text-sm text-muted-foreground shadow-[0_8px_24px_-16px_rgba(15,23,42,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/35 hover:text-foreground hover:shadow-[0_12px_28px_-16px_rgba(5,150,105,0.25)]"
                   >
                     <span className="font-medium text-foreground">{link.label}</span>
                     <span className="font-mono text-xs">{link.username}</span>
@@ -170,10 +234,10 @@ export function Hero() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="relative"
+            className="relative hidden lg:block"
             aria-label="Profile highlights"
           >
-            <div className="glass-card rounded-[2rem] p-5 shadow-[0_18px_48px_-24px_rgba(15,23,42,0.3)] sm:p-8">
+            <div className="glass-card rounded-4xl p-5 shadow-[0_18px_48px_-24px_rgba(15,23,42,0.3)] sm:p-8">
               <p className="font-mono text-xs tracking-[0.24em] text-accent uppercase">
                 Focus Areas
               </p>
@@ -194,7 +258,7 @@ export function Hero() {
                 ))}
               </ul>
 
-              <div className="mt-8 grid gap-3 sm:grid-cols-2 sm:[grid-auto-rows:1fr]">
+              <div className="mt-8 grid gap-3 sm:auto-rows-[1fr] sm:grid-cols-2">
                 <div className="h-full">
                   <Stat label="Location" value={profile.location} />
                 </div>
@@ -220,12 +284,14 @@ function Stat({ label, value }: { label: string; value: string }) {
   return (
     <motion.div
       whileHover={{ y: -2, scale: 1.02 }}
-      className="flex h-full flex-col rounded-[1.2rem] border border-border/70 bg-background/70 px-4 py-3 shadow-[0_8px_22px_-16px_rgba(15,23,42,0.18)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_12px_28px_-16px_rgba(79,70,229,0.24)]"
+      className="flex h-full flex-col rounded-[1.2rem] border border-border/70 bg-background/70 px-4 py-3 shadow-[0_8px_22px_-16px_rgba(15,23,42,0.18)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/35 hover:shadow-[0_12px_28px_-16px_rgba(5,150,105,0.24)]"
     >
       <p className="text-xs tracking-[0.16em] text-muted-foreground uppercase">
         {label}
       </p>
-      <p className="mt-2 text-sm leading-6 text-foreground break-words [overflow-wrap:anywhere]">{value}</p>
+      <p className="mt-2 text-sm leading-6 text-foreground wrap-break-word">
+        {value}
+      </p>
     </motion.div>
   );
 }
